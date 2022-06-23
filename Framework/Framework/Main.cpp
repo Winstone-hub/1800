@@ -1,59 +1,64 @@
-// ** Framework v0.3
+// ** Framework v0.4
 #include <iostream>
 
 using namespace std;
 
-
-
-
-
-
-
+// ** 연산자 오버로딩
 // ** 가상함수 & 순수가상함수
-
 // ** 오버로딩 & 오버라이딩
 
-// ** 연산자 오버로딩
 
+// ** 상속
+class Parent
+{
+protected:
+	string Name;
+public:
+	virtual void Output() = 0;
 
+	Parent() {}
+	Parent(string _str) : Name(_str) {}
+};
 
-
-
-// ** 생성자 & 소멸자 & 복사생성자 
-class Object
+class Child : public Parent
 {
 public:
-	// ** 생성자 & 소멸자 = 별로의 호출이 없더라도 자동으로 호출이 됨.
-	Object()
+	void Output()
 	{
-		// ** 생성자 
-		cout << "생성자" << endl;
+		cout << Name << endl;
+	}
+public:
+	Child() {}
+	Child(string _str) : Parent(_str) {}
+};
+
+
+class Object : public Parent
+{
+public:
+	void Output()
+	{
+		cout << Name << endl;
 	}
 
-	~Object()
-	{
-		// ** 소멸자
-		cout << "소멸자" << endl;
-	}
-
-	//=========================================
-	//=========================================
-
-	// ** 복사생성자 = 사용자가 직접 호출한 경우에만 호출됨.
-	// ** 매개변수의 개수와 형태에 따라서 선택적(자동)으로 호출됨.
-	Object(string _str)
-	{
-		// ** 복사 생성자 
-		cout << _str << endl;
-	}
+public:
+	Object() {}
+	Object(string _str) : Parent(_str) {}
 };
 
 
 
 int main(void)
 {
-	Object o;// = Object();
-	cout << "=============================" << endl;
+	// ** 다형성
+	Parent* p[2];
+
+	p[0] = new Child("Child");
+	p[1] = new Object("Object");
+
+	for (int i = 0; i < 2; ++i)
+		p[i]->Output();
+		
 
 	return 0;
 }
