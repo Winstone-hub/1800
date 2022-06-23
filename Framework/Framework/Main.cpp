@@ -1,4 +1,4 @@
-// ** Framework v0.4
+// ** Framework v0.5
 #include <iostream>
 
 using namespace std;
@@ -14,7 +14,7 @@ class Parent
 protected:
 	string Name;
 public:
-	virtual void Output() = 0;
+	void Output() { cout << Name << endl; }
 
 	Parent() {}
 	Parent(string _str) : Name(_str) {}
@@ -23,24 +23,12 @@ public:
 class Child : public Parent
 {
 public:
-	void Output()
-	{
-		cout << Name << endl;
-	}
-public:
 	Child() {}
 	Child(string _str) : Parent(_str) {}
 };
 
-
 class Object : public Parent
 {
-public:
-	void Output()
-	{
-		cout << Name << endl;
-	}
-
 public:
 	Object() {}
 	Object(string _str) : Parent(_str) {}
@@ -50,15 +38,12 @@ public:
 
 int main(void)
 {
-	// ** 다형성
-	Parent* p[2];
+	// ** 상속
+	Child c = Child("Child");
+	c.Output();
 
-	p[0] = new Child("Child");
-	p[1] = new Object("Object");
-
-	for (int i = 0; i < 2; ++i)
-		p[i]->Output();
-		
+	Object o = Object("Object");
+	o.Output();
 
 	return 0;
 }
