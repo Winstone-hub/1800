@@ -1,16 +1,13 @@
-// ** Framework v0.2
+// ** Framework v0.3
 #include <iostream>
-
-// ** namespace 
-
-/*
-using std::cout;
-using std::endl;
-*/
 
 using namespace std;
 
-// ** 생성자 & 소멸자 & 복사생성자 
+
+
+
+
+
 
 // ** 가상함수 & 순수가상함수
 
@@ -19,12 +16,44 @@ using namespace std;
 // ** 연산자 오버로딩
 
 
+
+
+
+// ** 생성자 & 소멸자 & 복사생성자 
+class Object
+{
+public:
+	// ** 생성자 & 소멸자 = 별로의 호출이 없더라도 자동으로 호출이 됨.
+	Object()
+	{
+		// ** 생성자 
+		cout << "생성자" << endl;
+	}
+
+	~Object()
+	{
+		// ** 소멸자
+		cout << "소멸자" << endl;
+	}
+
+	//=========================================
+	//=========================================
+
+	// ** 복사생성자 = 사용자가 직접 호출한 경우에만 호출됨.
+	// ** 매개변수의 개수와 형태에 따라서 선택적(자동)으로 호출됨.
+	Object(string _str)
+	{
+		// ** 복사 생성자 
+		cout << _str << endl;
+	}
+};
+
+
+
 int main(void)
 {
-	cout << "Hello World!!" << endl;
-
+	Object o;// = Object();
+	cout << "=============================" << endl;
 
 	return 0;
 }
-
-
