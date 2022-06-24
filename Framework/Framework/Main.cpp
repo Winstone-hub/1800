@@ -1,4 +1,4 @@
-// ** Framework v0.6
+// ** Framework v0.7
 #include <iostream>
 #include <Windows.h>
 
@@ -75,19 +75,32 @@ public:
 
 
 
+
+
+const int ObjectID_Child	= 0;
+const int ObjectID_Object	= 1;
+const int ObjectID_A		= 2;
+const int ObjectID_MAX		= 3;
+
+
 int main(void)
 {
-	Parent* p[3];
+	Parent* p[ObjectID_MAX][128];
 
-	p[0] = new Child("È«±æµ¿");
-	p[1] = new Object("ÀÓ²©Á¤");
-	p[2] = new A("ÀÌ¸ù·æ");
+	for (int i = 0; i < ObjectID_MAX; ++i)
+	{
+		for (int j = 0; j < 128; ++j)
+		{
+			p[i][j]->Output();
+		}
+	}
 
-
-	p[0]->Output();
-	p[1]->Output();
-
-	p[2]->Output();
-
+	for (int j = 0; j < 128; ++j)
+	{
+		p[ObjectID_Child][j]->Output();
+		p[ObjectID_Object][j]->Output();
+		p[ObjectID_A][j]->Output();
+	}
+	
 	return 0;
 }
