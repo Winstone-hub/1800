@@ -41,5 +41,8 @@
     <ClInclude Include="Object.h">
       <Filter>소스 파일\01. Object</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
-// ** Framework v2.1
+#pragma once
+// ** Framework v2.2
 #include "MainUpdate.h"
+#include "Singleton.h"
 
-
+Singleton* Singleton::Instance = nullptr;
 
 int main(void)
 {
@@ -23,6 +25,9 @@ int main(void)
 
 			// ** ±×¸®±â
 			Main.Render();
+
+
+			cout << Singleton::GetInstance()->Number << endl;
 		}
 	}
 

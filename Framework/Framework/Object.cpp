@@ -1,4 +1,6 @@
 #include "Object.h"
+#include "Singleton.h"
+
 
 Object::Object()
 {
@@ -10,17 +12,17 @@ Object::~Object()
 
 void Object::Start()
 {
-	Time = 0;
+	Singleton::GetInstance()->Number = 10;
 }
 
 void Object::Update()
 {
-	++Time;
+	Singleton::GetInstance()->Number++;
 }
 
 void Object::Render()
 {
-	cout << Time << endl;
+	//cout << Time << endl;
 }
 
 void Object::Release()

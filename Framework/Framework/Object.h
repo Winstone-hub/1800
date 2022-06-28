@@ -3,8 +3,6 @@
 
 class Object
 {
-private:
-	int Time;
 public:
 	void Start();
 	void Update();
