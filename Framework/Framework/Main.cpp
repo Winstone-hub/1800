@@ -1,34 +1,28 @@
-// ** Framework v1.0  GetTickCount64
-#include <iostream>
-#include <Windows.h>
-
-using namespace std;
+// ** Framework v2.1
+#include "MainUpdate.h"
 
 
-// 게임 
 
 int main(void)
 {
-	// ** DWORD unsigned long
-	// ** ULONGLONG unsigned __int64
+	// ** 최초에 생성후 초기화.
+	MainUpdate Main;
+	Main.Start();
 
-	//					1 / 1000     max 시간 = 49일
-	DWORD dwTime = GetTickCount();
-
-	//					1 / 1000     max 시간 = 500년
 	ULONGLONG Time = GetTickCount64();
-
-	int i = 0;
 
 	while (true)
 	{
-		if (Time + 1000 <= GetTickCount64())
+		if (Time + 30 <= GetTickCount64())
 		{
 			Time = GetTickCount64();
-
 			system("cls");
 
-			cout << ++i << endl;
+			// ** 변경사항 및 충돌 등의 이벤트 체크
+			Main.Update();
+
+			// ** 그리기
+			Main.Render();
 		}
 	}
 
