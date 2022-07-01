@@ -25,6 +25,24 @@
     <Filter Include="소스 파일\01. Object\Enemy">
       <UniqueIdentifier>{78b654d8-a3b0-4ef8-b1a5-51954695057e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager">
+      <UniqueIdentifier>{891e9047-9c2e-4358-b5f3-442c7f5c81c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\SceneManager">
+      <UniqueIdentifier>{65621a7d-4dac-434c-ba68-d8291bf2e90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{5d7c1de5-f363-4070-8b69-4174250e0f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Logo">
+      <UniqueIdentifier>{8137f3c6-8119-42d6-8ef6-206f182edfac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Menu">
+      <UniqueIdentifier>{5b18df48-e88a-4f61-ada1-038589413352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Stage">
+      <UniqueIdentifier>{1b91055a-b86c-45ac-b6e6-19847f775c50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -42,6 +60,21 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>소스 파일\01. Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -53,14 +86,26 @@
     <ClInclude Include="Object.h">
       <Filter>소스 파일\01. Object</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>소스 파일\01. Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>소스 파일\01. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

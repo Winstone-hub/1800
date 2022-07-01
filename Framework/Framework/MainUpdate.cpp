@@ -1,7 +1,6 @@
 #include "MainUpdate.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Singleton.h"
 
 MainUpdate::MainUpdate()
 {

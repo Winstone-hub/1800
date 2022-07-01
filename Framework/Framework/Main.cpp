@@ -1,15 +1,11 @@
 #pragma once
-// ** Framework v2.3  ( Singleton )
+// ** Framework v3.0  ( Scenes & ScneManager )
 #include "MainUpdate.h"
-#include "Singleton.h"
-
-Singleton* Singleton::Instance = nullptr;
 
 int main(void)
 {
 	MainUpdate Main;
 	Main.Start();
-
 
 	ULONGLONG Time = GetTickCount64();
 
