@@ -1,6 +1,9 @@
 #pragma once
 
 // ** Singleton
+// ** 1. 단일 인스턴스로 구성됨. (인스턴스가 여러개로 구성되지 않는다.)
+// ** 2. 어디에서나 호출 가능.
+
 class Singleton
 {
 private:
@@ -13,6 +16,12 @@ public:
 		return Instance;
 	}
 
-	int Number;
+private:
+	string SceneState;
+	
+private:
+	Singleton() { }
+public:
+	~Singleton() { }
 };
 

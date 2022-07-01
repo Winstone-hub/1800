@@ -6,6 +6,7 @@ class MainUpdate
 {
 private:
 	Object* pPlayer;
+	Object* pEnemy;
 public:
 	void Start();	// 초기화
 	void Update();  // 변경사항 및 충돌 등의 이벤트 체크

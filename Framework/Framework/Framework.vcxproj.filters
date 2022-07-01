@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\01. Object">
       <UniqueIdentifier>{9d4cbcfb-e1c1-4b8b-8853-268bb656bbcb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\Player">
+      <UniqueIdentifier>{4d5c2b13-23c2-4cb3-9057-745f7dab6a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Enemy">
+      <UniqueIdentifier>{78b654d8-a3b0-4ef8-b1a5-51954695057e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -29,6 +35,12 @@
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\01. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\01. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\01. Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\01. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>소스 파일\01. Object\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
