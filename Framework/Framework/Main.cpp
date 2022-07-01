@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v3.0  ( Scenes & ScneManager )
+// ** Framework v3.1  ( ScneManager->SetScene )
 #include "MainUpdate.h"
 
 int main(void)

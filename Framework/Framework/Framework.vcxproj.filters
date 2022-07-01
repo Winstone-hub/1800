@@ -107,5 +107,8 @@
     <ClInclude Include="Stage.h">
       <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

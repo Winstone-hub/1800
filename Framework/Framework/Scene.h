@@ -3,6 +3,8 @@
 
 class Scene
 {
+protected:
+	int Count;
 public:
 	virtual void Start()PURE;
 	virtual void Update()PURE;

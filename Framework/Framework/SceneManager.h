@@ -18,7 +18,10 @@ public:
 private:
 	Scene* SceneState;
 public:
-	void SetScene();
+	void SetScene(SCENEID _SceneID);
+	void Update();
+	void Render();
+	void Release();
 private:
 	SceneManager();
 public:
