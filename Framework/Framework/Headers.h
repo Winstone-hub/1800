@@ -7,3 +7,4 @@
 using namespace std;
 
 #include "Enum.h"
+#include "Constant.h"

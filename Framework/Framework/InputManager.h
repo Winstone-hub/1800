@@ -1,4 +1,6 @@
 #pragma once
+#include "Headers.h"
+
 class InputManager
 {
 private:
@@ -10,9 +12,11 @@ public:
 			Instance = new InputManager;
 		return Instance;
 	}
+private:
+	DWORD dwKey;
 public:
 	void CheckKey();
-
+	DWORD GetKey() { return dwKey; }
 private:
 	InputManager();
 public:

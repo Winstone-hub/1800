@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v4.1  InputManager -> 비트연산 (2의 보수)
+// ** Framework v4.2  InputManager -> GetAsyncKeyState
 #include "MainUpdate.h"
 
 int main(void)
