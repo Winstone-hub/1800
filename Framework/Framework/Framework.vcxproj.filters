@@ -46,6 +46,9 @@
     <Filter Include="소스 파일\99. Manager\InputManager">
       <UniqueIdentifier>{42531e2f-1707-4fd3-b35f-7a3d794cbcc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Include">
+      <UniqueIdentifier>{f2692543-5685-4da8-8b39-c64d036e20b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -113,14 +116,17 @@
     <ClInclude Include="Stage.h">
       <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>소스 파일\99. Manager\InputManager</Filter>
     </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
     <ClInclude Include="Constant.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>헤더 파일\Include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,8 @@
 
 class Object
 {
+protected:
+	Transform Info;
 public:
 	virtual void Start()PURE;
 	virtual void Update()PURE;

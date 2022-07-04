@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v4.2  InputManager -> GetAsyncKeyState
+// ** Framework v4.3  InputManager [OR] [AND]
 #include "MainUpdate.h"
 
 int main(void)

@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 Menu::Menu()
 {
@@ -14,14 +15,14 @@ Menu::~Menu()
 
 void Menu::Start()
 {
-	Count = 0;
+
 }
 
 void Menu::Update()
 {
-	Count++;
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
-	if (Count >= 50)
+	if (dwKey & KEY_RETURN)
 		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
 }
 

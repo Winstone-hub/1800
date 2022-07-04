@@ -17,23 +17,23 @@ void InputManager::CheckKey()
 	dwKey = 0;
 
 	if (GetAsyncKeyState(VK_UP) || GetAsyncKeyState('W'))
-		dwKey = KEY_UP;
+		dwKey |= KEY_UP;
 
 	if (GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState('S'))
-		dwKey = KEY_DOWN;
+		dwKey |= KEY_DOWN;
 
 	if (GetAsyncKeyState(VK_LEFT) || GetAsyncKeyState('A'))
-		dwKey = KEY_LEFT;
+		dwKey |= KEY_LEFT;
 
 	if (GetAsyncKeyState(VK_RIGHT) || GetAsyncKeyState('D'))
-		dwKey = KEY_RIGHT;
+		dwKey |= KEY_RIGHT;
 
 	if (GetAsyncKeyState(VK_SPACE))
-		dwKey = KEY_SPACE;
+		dwKey |= KEY_SPACE;
 
 	if (GetAsyncKeyState(VK_RETURN))
-		dwKey = KEY_RETURN;
+		dwKey |= KEY_RETURN;
 
 	if (GetAsyncKeyState(VK_ESCAPE))
-		dwKey = KEY_ESCAPE;
+		dwKey |= KEY_ESCAPE;
 }

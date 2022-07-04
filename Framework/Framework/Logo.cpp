@@ -1,5 +1,6 @@
 #include "Logo.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 Logo::Logo()
 {
@@ -14,15 +15,16 @@ Logo::~Logo()
 
 void Logo::Start()
 {
-	Count = 0;
+
 }
 
 void Logo::Update()
 {
-	Count++;
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
-	if(Count >= 50)
+	if (dwKey & KEY_RETURN)
 		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
+
 }
 
 void Logo::Render()
