@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v3.1  ( ScneManager->SetScene )
+// ** Framework v4.1  InputManager -> 비트연산 (2의 보수)
 #include "MainUpdate.h"
 
 int main(void)
