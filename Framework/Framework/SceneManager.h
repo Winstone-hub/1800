@@ -2,7 +2,6 @@
 #include "Headers.h"
 
 
-
 class Scene;
 class SceneManager
 {

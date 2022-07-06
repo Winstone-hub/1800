@@ -12,8 +12,12 @@ struct Vector3
 
 	Vector3(float _x, float _y, float _z)
 		: x(_x), y(_y), z(_z) { };
-};
 
+	Vector3 operator-(Vector3 _V1)
+	{
+		return Vector3(x - _V1.x, y - _V1.y, z - _V1.z);
+	}
+};
 
 struct Transform
 {
@@ -21,3 +25,6 @@ struct Transform
 	Vector3 Rotation;
 	Vector3 Scale;
 };
+
+
+

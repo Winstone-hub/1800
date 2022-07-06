@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "InputManager.h"
 
-MainUpdate::MainUpdate(): Count(0)
+MainUpdate::MainUpdate()
 {
 
 }

@@ -24,12 +24,11 @@ void Logo::Update()
 
 	if (dwKey & KEY_RETURN)
 		SceneManager::GetInstance()->SetScene(SCENEID::MENU);
-
 }
 
 void Logo::Render()
 {
-	cout << "Logo : " << Count << endl;
+	cout << "Logo : " << endl;
 }
 
 void Logo::Release()

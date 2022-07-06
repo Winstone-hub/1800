@@ -28,7 +28,7 @@ void Menu::Update()
 
 void Menu::Render()
 {
-	cout << "Menu : " << Count << endl;
+	cout << "Menu : " << endl;
 }
 
 void Menu::Release()

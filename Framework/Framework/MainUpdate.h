@@ -3,8 +3,6 @@
 
 class MainUpdate
 {
-private:
-	int Count;
 public:
 	void Start();
 	void Update();
