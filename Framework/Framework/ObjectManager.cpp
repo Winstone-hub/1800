@@ -5,8 +5,10 @@
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
-ObjectManager::ObjectManager()
+ObjectManager::ObjectManager() : pPlayer(nullptr), pEnemy(nullptr)
 {
+	for (int i = 0; i < 128; ++i)
+		pBullet[i] = nullptr;
 }
 
 ObjectManager::~ObjectManager()
@@ -35,9 +37,6 @@ void ObjectManager::Start()
 
 	pEnemy = new Enemy;
 	pEnemy->Start();
-
-	for (int i = 0; i < 128; ++i)
-		pBullet[i] = nullptr;
 }
 
 void ObjectManager::Update()

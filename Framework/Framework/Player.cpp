@@ -22,11 +22,6 @@ void Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
-	Vector3 vTarget = Vector3(10.0f, 10.0f);
-
-	Vector3 vDirection = vTarget - Info.Position;
-	
-	
 	if (dwKey & KEY_UP)
 		Info.Position.y++;
 
@@ -42,8 +37,6 @@ void Player::Update()
 	if (dwKey & KEY_SPACE)
 		ObjectManager::GetInstance()->CreateObject();
 
-	if (dwKey & KEY_RETURN)
-		cout << "KEY_RETURN" << endl;
 
 	if (dwKey & KEY_ESCAPE)
 		Info.Position = Vector3(0.0f, 0.0f);
