@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "InputManager.h"
+#include "ObjectManager.h"
 
 Player::Player()
 {
@@ -15,7 +16,6 @@ void Player::Start()
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(0.0f, 0.0f);
-
 }
 
 void Player::Update()
@@ -40,9 +40,7 @@ void Player::Update()
 		Info.Position.x++;
 
 	if (dwKey & KEY_SPACE)
-	{
-		
-	}
+		ObjectManager::GetInstance()->CreateObject();
 
 	if (dwKey & KEY_RETURN)
 		cout << "KEY_RETURN" << endl;

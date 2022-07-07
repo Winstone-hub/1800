@@ -1,7 +1,6 @@
 #include "Stage.h"
 #include "SceneManager.h"
-#include "Player.h"
-#include "Enemy.h"
+#include "ObjectManager.h"
 
 Stage::Stage()
 {
@@ -16,37 +15,21 @@ Stage::~Stage()
 
 void Stage::Start()
 {
-	pPlayer = new Player;
-	pPlayer->Start();
-
-	pEnemy = new Enemy;
-	pEnemy->Start();
+	ObjectManager::GetInstance()->Start();
 }
 
 void Stage::Update()
 {
-	pPlayer->Update();
-	pEnemy->Update();
+	ObjectManager::GetInstance()->Update();
 }
 
 void Stage::Render()
 {
-	pPlayer->Render();
-	//pEnemy->Render();
-
-	//cout << "Player X : " << pPlayer->GetPosition().x << endl;
-	//cout << "Player Y : " << pPlayer->GetPosition().y << endl;
-
-	cout << "Enemy X : " << pEnemy->GetPosition().x << endl;
-	cout << "Enemy Y : " << pEnemy->GetPosition().y << endl;
+	ObjectManager::GetInstance()->Render();
 }
 
 void Stage::Release()
 {
-	delete pPlayer;
-	pPlayer = nullptr;
-
-	delete pEnemy;
-	pEnemy = nullptr;
+	
 }
 
