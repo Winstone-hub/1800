@@ -11,6 +11,8 @@ public:
 	virtual void Render()PURE;
 	virtual void Release()PURE;
 public:
+	Vector3 GetPosition() const { return Info.Position; } 
+public:
 	Object();
 	virtual ~Object();
 };

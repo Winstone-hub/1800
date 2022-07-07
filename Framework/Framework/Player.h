@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 
-class Singleton;
+
 class Player : public Object
 {
 public:

@@ -1,24 +1,11 @@
 #pragma once
-// ** Framework v5.0   Operator Overloading
+// ** Framework v6.0   ObjectManager
 #include "MainUpdate.h"
 
 
 
 int main(void)
 {
-	
-	Vector3 V1 = Vector3(1.0f, 1.0f);
-	Vector3 V2 = Vector3(10.0f, 10.0f);
-
-	Vector3 V3 = V1 - V2;
-
-	cout << "X : " << V3.x << endl;
-	cout << "Y : " << V3.y << endl;
-	
-
-
-
-	/*
 	MainUpdate Main;
 	Main.Start();
 
@@ -35,7 +22,6 @@ int main(void)
 			Main.Render();
 		}
 	}
-	*/
 
 	return 0;
 }
