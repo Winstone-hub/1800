@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v6.1   ObjectManager
+// ** Framework v7.0  Bullet->Target : Direction
 #include "MainUpdate.h"
 
 

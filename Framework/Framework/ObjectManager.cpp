@@ -25,6 +25,16 @@ void ObjectManager::CreateObject()
 		{
 			pBullet[i] = new Bullet;
 			pBullet[i]->Start();
+			pBullet[i]->SetPosition(74.0f, 1.0f);
+
+			//pBullet[i]->SetTarget(pPlayer);
+
+			Vector3 Direction;
+			Direction.x = pPlayer->GetPosition().x - pBullet[i]->GetPosition().x;
+			Direction.y = pPlayer->GetPosition().y - pBullet[i]->GetPosition().y;
+
+			pBullet[i]->SetDirection(Direction);
+
 			break;
 		}
 	}
