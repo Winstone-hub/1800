@@ -20,7 +20,7 @@ void Player::Start()
 	Target = nullptr;
 }
 
-void Player::Update()
+int Player::Update()
 {
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
@@ -41,6 +41,7 @@ void Player::Update()
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);
+	return 0;
 }
 
 void Player::Render()

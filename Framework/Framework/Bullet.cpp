@@ -20,17 +20,41 @@ void Bullet::Start()
 	Target = nullptr;
 }
 
-void Bullet::Update()
+int  Bullet::Update()
 {
-	//Info.Position += Info.Direction * 0.01f;
+	switch (Index)
+	{
+	case 0:
+		Info.Position += Info.Direction * 0.05f;
+		break;
+	case 1:
+	{
+		Info.Direction = Target->GetPosition() - Info.Position;
+		Info.Position += Info.Direction * 0.025f;
+	}
+		break;
+	}
 
-	Info.Position.x += Info.Direction.x * 0.1f;
-	Info.Position.y += Info.Direction.y * 0.1f;
+	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
+		Info.Position.y <= 0 || Info.Position.y >= 40)
+	{
+		return 1;
+	}
+
+	return 0;
 }
 
 void Bullet::Render()
 {
-	CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"*");
+	switch (Index)
+	{
+	case 0:
+		CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"*");
+		break;
+	case 1:
+		CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"*", 12);
+		break;
+	}
 }
 
 void Bullet::Release()

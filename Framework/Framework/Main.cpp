@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v7.0  Bullet->Target : Direction
+// ** Framework v7.1  Bullet->Target : GuideBullet
 #include "MainUpdate.h"
 
 

@@ -8,7 +8,7 @@ protected:
 	Object* Target;
 public:
 	virtual void Start()PURE;
-	virtual void Update()PURE;
+	virtual int Update()PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;
 public:

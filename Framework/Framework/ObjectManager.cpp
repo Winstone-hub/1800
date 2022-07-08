@@ -17,7 +17,7 @@ ObjectManager::~ObjectManager()
 }
 
 
-void ObjectManager::CreateObject()
+void ObjectManager::CreateObject(int _StateIndex)
 {
 	for (int i = 0; i < 128; ++i)
 	{
@@ -27,14 +27,20 @@ void ObjectManager::CreateObject()
 			pBullet[i]->Start();
 			pBullet[i]->SetPosition(74.0f, 1.0f);
 
-			//pBullet[i]->SetTarget(pPlayer);
-
-			Vector3 Direction;
-			Direction.x = pPlayer->GetPosition().x - pBullet[i]->GetPosition().x;
-			Direction.y = pPlayer->GetPosition().y - pBullet[i]->GetPosition().y;
-
-			pBullet[i]->SetDirection(Direction);
-
+			switch (_StateIndex)
+			{
+			case 0:
+			{
+				Vector3 Direction = pPlayer->GetPosition() - pBullet[i]->GetPosition();
+				pBullet[i]->SetDirection(Direction);
+				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
+			}
+				break;
+			case 1:
+				pBullet[i]->SetTarget(pPlayer);
+				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
+				break;
+			}
 			break;
 		}
 	}
@@ -54,10 +60,17 @@ void ObjectManager::Update()
 	pPlayer->Update();
 	pEnemy->Update();
 
+	int result = 0;
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])
-			pBullet[i]->Update();
+			result = pBullet[i]->Update();
+
+		if (result == 1)
+		{
+			delete pBullet[i];
+			pBullet[i] = nullptr;
+		}
 	}
 }
 
