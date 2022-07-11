@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v8.0 CursorManager
+// ** Framework v8.0 CollisionManager
 #include "MainUpdate.h"
 
 
