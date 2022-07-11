@@ -12,6 +12,8 @@ public:
 	virtual void Render()PURE;
 	virtual void Release()PURE;
 public:
+	Transform GetTransform() const { return Info; }
+
 	Vector3 GetPosition() const { return Info.Position; } 
 	void SetPosition(Vector3 _Position) { Info.Position = _Position; }
 	void SetPosition(float _x, float _y) { Info.Position = Vector3(_x, _y); }

@@ -2,6 +2,8 @@
 #include "Bullet.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "CollisionManager.h"
+#include "CursorManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -64,7 +66,16 @@ void ObjectManager::Update()
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])
+		{
 			result = pBullet[i]->Update();
+
+			if (CollisionManager::RectCollision(
+				pPlayer->GetTransform(), 
+				pBullet[i]->GetTransform()))
+			{
+				CursorManager::GetInstance()->SetCursorPosition(0.0f, 0.0f, (char*)"충돌입니다.");
+			}
+		}
 
 		if (result == 1)
 		{
