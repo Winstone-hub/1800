@@ -49,10 +49,10 @@ void Bullet::Render()
 	switch (Index)
 	{
 	case 0:
-		CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"*");
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*");
 		break;
 	case 1:
-		CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"*", 12);
+		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
 		break;
 	}
 }

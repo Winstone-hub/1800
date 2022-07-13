@@ -73,7 +73,7 @@ void ObjectManager::Update()
 				pPlayer->GetTransform(), 
 				pBullet[i]->GetTransform()))
 			{
-				CursorManager::GetInstance()->SetCursorPosition(0.0f, 0.0f, (char*)"충돌입니다.");
+				CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"충돌입니다.");
 			}
 		}
 

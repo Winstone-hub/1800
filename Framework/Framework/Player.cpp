@@ -46,7 +46,7 @@ int Player::Update()
 
 void Player::Render()
 {
-	CursorManager::GetInstance()->SetCursorPosition(Info.Position, (char*)"¡â");
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"¡â");
 }
 
 void Player::Release()

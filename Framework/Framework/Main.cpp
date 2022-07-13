@@ -1,5 +1,5 @@
 #pragma once
-// ** Framework v8.0 CollisionManager
+// ** Framework v9.0    DoubleBuffer
 #include "MainUpdate.h"
 
 
@@ -12,13 +12,14 @@ int main(void)
 
 	while (true)
 	{
-		if (Time + 100 <= GetTickCount64())
+		if (Time <= GetTickCount64())
 		{
-			Time = GetTickCount64();
 			system("cls");
 
 			Main.Update();
 			Main.Render();
+
+			Time = GetTickCount64();
 		}
 	}
 
