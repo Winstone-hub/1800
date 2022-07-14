@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "CollisionManager.h"
 #include "CursorManager.h"
+#include "MathManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -33,7 +34,7 @@ void ObjectManager::CreateObject(int _StateIndex)
 			{
 			case 0:
 			{
-				Vector3 Direction = pPlayer->GetPosition() - pBullet[i]->GetPosition();
+				Vector3 Direction = MathManager::GetDirection(pBullet[i]->GetPosition(), pPlayer->GetPosition());
 				pBullet[i]->SetDirection(Direction);
 				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
 			}

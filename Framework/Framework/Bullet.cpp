@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "CursorManager.h"
+#include "MathManager.h"
 
 Bullet::Bullet()
 {
@@ -17,6 +18,8 @@ void Bullet::Start()
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 
+	Speed = 1.0f;
+
 	Target = nullptr;
 }
 
@@ -25,12 +28,12 @@ int  Bullet::Update()
 	switch (Index)
 	{
 	case 0:
-		Info.Position += Info.Direction * 0.05f;
+		Info.Position += Info.Direction * Speed;
 		break;
 	case 1:
 	{
-		Info.Direction = Target->GetPosition() - Info.Position;
-		Info.Position += Info.Direction * 0.025f;
+		Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
+		Info.Position += Info.Direction * (Speed * 0.5f);
 	}
 		break;
 	}
