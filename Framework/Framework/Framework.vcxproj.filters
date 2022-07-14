@@ -64,6 +64,9 @@
     <Filter Include="소스 파일\99. Manager\MathManager">
       <UniqueIdentifier>{d43d0af5-833c-4f46-8fac-3779937bef0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\ObjectFactory">
+      <UniqueIdentifier>{5e32685a-2bb2-4a3b-a9a5-293dd9162fb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="MathManager.h">
       <Filter>소스 파일\99. Manager\MathManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>소스 파일\99. Manager\ObjectFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
