@@ -21,6 +21,29 @@ void Bullet::Start()
 	Speed = 1.0f;
 
 	Target = nullptr;
+
+	Option = rand() % 4;
+
+
+	switch (Option)
+	{
+	case 0: // ** 위
+		Info.Position = Vector3(rand() % 148, 0.0f);
+		break;
+
+	case 1: // 아래
+		Info.Position = Vector3(rand() % 148, 39.0f);
+		break;
+		 
+	case 2: // 오른쪽
+		Info.Position = Vector3(0.0f, rand() % 40);
+		break;
+
+	case 3: // 왼쪽
+		Info.Position = Vector3(148.0f, rand() % 40);
+		break;
+	}
+
 }
 
 int  Bullet::Update()

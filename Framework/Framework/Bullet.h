@@ -6,6 +6,7 @@ class Bullet : public Object
 private:
 	int Index;
 	float Speed;
+	int Option;
 public:
 	virtual void Start()override;
 	virtual int  Update()override;

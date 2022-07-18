@@ -27,7 +27,8 @@ void ObjectManager::CreateObject(int _StateIndex)
 	{
 		if (pBullet[i] == nullptr)
 		{
-			pBullet[i] = ObjectFactory::CreateBullet(Vector3(74.0f, 1.0f));
+			//pBullet[i] = ObjectFactory::CreateBullet(Vector3(74.0f, 1.0f));
+			pBullet[i] = ObjectFactory::CreateBullet();
 
 			switch (_StateIndex)
 			{
@@ -60,6 +61,7 @@ void ObjectManager::Update()
 	pEnemy->Update();
 
 	int result = 0;
+
 	for (int i = 0; i < 128; ++i)
 	{
 		if (pBullet[i])
