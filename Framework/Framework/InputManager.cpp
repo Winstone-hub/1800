@@ -16,10 +16,10 @@ void InputManager::CheckKey()
 {
 	dwKey = 0;
 
-	if (GetAsyncKeyState(VK_UP) || GetAsyncKeyState('W'))
+	if (GetAsyncKeyState(VK_UP) || GetAsyncKeyState('W') )
 		dwKey |= KEY_UP;
 
-	if (GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState('S'))
+	if (GetAsyncKeyState(VK_DOWN) || GetAsyncKeyState('S') )
 		dwKey |= KEY_DOWN;
 
 	if (GetAsyncKeyState(VK_LEFT) || GetAsyncKeyState('A'))
