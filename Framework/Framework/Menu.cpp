@@ -71,6 +71,8 @@ void Menu::Update()
 
 void Menu::Render()
 {
+	CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - 5, 1.0f, 100, Color);
+
 	for (int i = 0; i < MaxSize; ++i)
 		CursorManager::GetInstance()->WriteBuffer((150.0f / 2) - (Length[1]/2 + 2), 15.0f + (i * 2), (char*)"[             ]", Color);
 
