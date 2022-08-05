@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Bullet.h"
+#include "Shield.h"
 #include "InputManager.h"
 #include "CursorManager.h"
 
@@ -9,6 +10,7 @@ Player::Player()
 
 Player::~Player()
 {
+	Release();
 }
 
 void Player::Start()
@@ -18,6 +20,14 @@ void Player::Start()
 	Info.Scale = Vector3(2.0f, 1.0f);
 
 	Target = nullptr;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		Bullets[i] = new Shield;
+		Bullets[i]->Start();
+		Bullets[i]->SetPosition(Info.Position);
+		((Shield*)Bullets[i])->SetAngle(90.0f * i);
+	}
 }
 
 int Player::Update()
@@ -41,15 +51,29 @@ int Player::Update()
 
 	//if (dwKey & KEY_ESCAPE)
 		//Info.Position = Vector3(0.0f, 0.0f);
+
+	for (int i = 0; i < 4; ++i)
+	{
+		Bullets[i]->SetPosition(Info.Position);
+		Bullets[i]->Update();
+	}
+
 	return 0;
 }
 
 void Player::Render()
 {
 	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"¡â");
+
+	for (int i = 0; i < 4; ++i)
+		Bullets[i]->Render();
 }
 
 void Player::Release()
 {
-
+	for (int i = 0; i < 4; ++i)
+	{
+		delete Bullets[i];
+		Bullets[i] = nullptr;
+	}
 }

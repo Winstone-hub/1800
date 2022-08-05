@@ -18,6 +18,7 @@ void Bullet::Start()
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
 
+
 	Speed = 1.0f;
 
 	Target = nullptr;

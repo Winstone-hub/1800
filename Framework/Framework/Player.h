@@ -4,6 +4,8 @@
 
 class Player : public Object
 {
+private:
+	Object* Bullets[4];
 public:
 	virtual void Start()override;
 	virtual int  Update()override;

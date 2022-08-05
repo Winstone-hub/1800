@@ -67,6 +67,9 @@
     <Filter Include="소스 파일\99. Manager\ObjectFactory">
       <UniqueIdentifier>{5e32685a-2bb2-4a3b-a9a5-293dd9162fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\Shield">
+      <UniqueIdentifier>{767a857e-4ee3-4a89-810f-400278696962}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="CursorManager.cpp">
       <Filter>소스 파일\99. Manager\CursorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>소스 파일\01. Object\Shield</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\99. Manager\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>소스 파일\01. Object\Shield</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
