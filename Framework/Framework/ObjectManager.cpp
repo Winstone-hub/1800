@@ -28,7 +28,7 @@ void ObjectManager::CreateObject(int _StateIndex)
 		if (pBullet[i] == nullptr)
 		{
 			//pBullet[i] = ObjectFactory::CreateBullet(Vector3(74.0f, 1.0f));
-			pBullet[i] = ObjectFactory::CreateBullet();
+			pBullet[i] = ObjectFactory<Bullet>::CreateObject();
 
 			switch (_StateIndex)
 			{
@@ -51,8 +51,8 @@ void ObjectManager::CreateObject(int _StateIndex)
 
 void ObjectManager::Start()
 {
-	pPlayer = ObjectFactory::CreatePlayer();
-	pEnemy = ObjectFactory::CreateEnemy();
+	pPlayer = ObjectFactory<Player>::CreateObject();
+	pEnemy = ObjectFactory<Enemy>::CreateObject();
 }
 
 void ObjectManager::Update()
