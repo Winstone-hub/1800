@@ -25,7 +25,6 @@ public:
 	}
 };
 
-
 // ** 데이터 타입을 전달할 수 있게 해준다.
 */
 template <typename T>
@@ -148,7 +147,6 @@ int main(void)
 	cout << endl;
 
 
-
 	vecNumbers.insert(3, 25);
 
 
@@ -167,6 +165,9 @@ int main(void)
 	for (int i = 0; i < vecNumbers.size(); ++i)
 		vecNumbers.Output(i);
 	cout << endl << endl;
+
+
+
 
 	/*********************************************************
 	// ** template 은 class에 사용할 경우 class 이름 뒤에 붙혀 사용한다.
