@@ -99,32 +99,47 @@ int main(void)
 
 
 		{
+			// ** map 생성
 			map<string, list<Object*>> ObjectList;
 
+			// ** 데이터 입력을 위한 반복문
 			for (int i = 0; i < 5; ++i)
 			{
+				// ** 색체 생성
 				Object* pObj = new Object;
+
+				// ** 객체 초기화
 				pObj->Initialize();
 
+				// ** 객체의 이름을 입력받기 위해
 				string str = "";
+
+				// ** 입력
 				cout << "이름 입력 : "; cin >> str;
+
+				// ** 입력받은 값으로 아이템 이름을 셋
 				pObj->Setkey(str);
 
+				// ** 아이템을 탐색
 				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
 
+				// ** 만약 아이템이 없다면....
 				if (iter == ObjectList.end())
 				{
+					// ** 리스트를 새롭게 생성
 					list<Object*> TempList;
+
+					// ** 리스트에 아이템을 삽입
 					TempList.push_back(pObj);
 
-					// **map 데이터 삽입
+					// ** 리스트를 map 에 추가
 					ObjectList.insert(make_pair(pObj->Getkey(), TempList));
 				}
-				else
+				else // ** 탐색된 키값이 있다면....
+					// ** 기존에 삽입된 아이템이 있다는 것이기 때문에 기존 리스트에 push_back
 					iter->second.push_back(pObj);
 			}
 			cout << "** 입력 종료 **" << endl << endl;
-
 
 			cout << "** 탐색 시작 **" << endl;
 			while (true)
