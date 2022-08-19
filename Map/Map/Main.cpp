@@ -1,12 +1,12 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
+#include <math.h>
 #include <map>
 #include <vector>
 #include <list>
 
 using namespace std;
-
 
 
 /*
@@ -78,7 +78,7 @@ int main(void)
 
 
 
-
+	/*
 	{
 		class Object
 		{
@@ -87,11 +87,11 @@ int main(void)
 			int Attack;
 
 		public:
-			void Initialize() 
-			{ 
-				Key = ""; 
-				srand(GetTickCount64()); 
-				Attack = rand() % 250 + 50; 
+			void Initialize()
+			{
+				Key = "";
+				srand(GetTickCount64());
+				Attack = rand() % 250 + 50;
 			}
 
 			void Render() { cout << "공격력 : " << Attack << " " << endl; }
@@ -158,7 +158,7 @@ int main(void)
 
 				// ** 입력한 문자열을 탐색한다.
 				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
-				
+
 				// ** 만약 탐색한 문자열이 없다면....
 				if (iter == ObjectList.end())
 				{
@@ -180,7 +180,126 @@ int main(void)
 			cout << "** 탐색 종료 **" << endl << endl;
 		}
 	}
+	*/
 
+	//============================================================================
+	//============================================================================
+	
+	int i = 0;
+	/*
+	{
+		multimap<string, int> strList;
+
+		strList.insert(make_pair("홍길동", 1));
+		strList.insert(make_pair("홍길동", 2));
+		strList.insert(make_pair("홍길동", 3));
+		strList.insert(make_pair("홍길동", 4));
+		strList.insert(make_pair("홍길동", 5));
+		strList.insert(make_pair("홍길동", 6));
+		strList.insert(make_pair("홍길동", 7));
+		strList.insert(make_pair("홍길동", 8));
+		strList.insert(make_pair("홍길동", 9));
+		strList.insert(make_pair("홍길동", 10));
+
+		for (multimap<string, int>::iterator iter = strList.begin() ;
+				iter != strList.end(); ++iter)
+		{
+			cout << iter->first << " : " << iter->second << endl;
+		}
+	}
+	*/
+
+	{
+		class Vector3
+		{
+		public:
+			float x, y, z;
+
+			Vector3() : x(0), y(0), z(0) {}
+			Vector3(float _x, float _y) : x(_x), y(_y), z(0) {}
+			Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+		};
+
+
+		class Object
+		{
+		private:
+			string Key;
+			Vector3 Position;
+
+			Object* Target;
+		public:
+			void Initialize()
+			{
+				Key = "";
+
+				Target = nullptr;
+
+				srand(GetTickCount64() * ((rand() + 100) % rand() + 1));
+
+				Position = Vector3(
+					rand() % 50 + 1 ,
+					rand() % 50 + 1 );
+			}
+
+			void Render() 
+			{ 
+				cout << "X : " << Position.x << endl;
+				cout << "Y : " << Position.y << endl << endl;
+			}
+
+		public:
+			string Getkey() const { return Key; }
+			void Setkey(const string& _Key) { Key = _Key; }
+			void SetTarget(Object* _Target) { Target = _Target; }
+			Vector3 GetPosition() const { return Position; }
+			void SetPosition(const float &_x, const float &_y) { Position = Vector3(_x, _y); }
+		};
+
+		Object* Player = new Object;
+		Player->SetPosition(25.0f, 25.0f);
+
+
+		multimap<float, Object*> ObjectList;
+
+
+		for (int i = 0; i < 20; ++i)
+		{
+			// ** 색체 생성
+			Object* pObj = new Object;
+
+			// ** 객체 초기화
+			pObj->Initialize();
+
+			pObj->SetTarget(Player);
+
+			// ** "Enemy" 값으로 객체 이름을 셋
+			pObj->Setkey("Enemy");
+
+
+			// ** 삼각 함수
+			float X = pObj->GetPosition().x - Player->GetPosition().x;
+			float Y = pObj->GetPosition().y - Player->GetPosition().y;
+
+			float D = sqrt((X * X) + (Y * Y));
+
+
+			// ** 거리를 키값으로 사용
+			ObjectList.insert(make_pair(D, pObj));
+		}
+
+		// ** 출력
+		for (multimap<float, Object*>::iterator iter = ObjectList.begin();
+			iter != ObjectList.end(); ++iter)
+		{
+			cout << "Player 와의 거리 : " << iter->first << endl;
+			iter->second->Render();
+		}
+
+		// ** Player와 제일 가까운 Enemy를 Target로 설정.
+		multimap<float, Object*>::iterator iter = ObjectList.begin();
+		Player->SetTarget((*iter).second);
+	}
 
 	return 0;
 }
