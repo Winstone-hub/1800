@@ -87,16 +87,20 @@ int main(void)
 			int Attack;
 
 		public:
-			void Initialize() { Key = ""; Attack = rand()%250 + 50; }
-			void Render() { cout << "공격력 : " << Attack << endl; }
+			void Initialize() 
+			{ 
+				Key = ""; 
+				srand(GetTickCount64()); 
+				Attack = rand() % 250 + 50; 
+			}
+
+			void Render() { cout << "공격력 : " << Attack << " " << endl; }
 
 		public:
 			string Getkey() const { return Key; }
 			void Setkey(const string& _Key) { Key = _Key; }
 			void SetAttack(const int& _Attack) { Attack = _Attack; }
 		};
-
-
 
 		{
 			// ** map 생성
@@ -121,7 +125,7 @@ int main(void)
 				pObj->Setkey(str);
 
 				// ** 아이템을 탐색
-				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
+				map<string, list<Object*>>::iterator iter = ObjectList.find(pObj->Getkey());
 
 				// ** 만약 아이템이 없다면....
 				if (iter == ObjectList.end())
@@ -148,11 +152,14 @@ int main(void)
 				string str = "";
 				cout << "이름 입력 : "; cin >> str;
 
+				// ** 반복문 종료 구문
 				if (str == "q")
 					break;
 
+				// ** 입력한 문자열을 탐색한다.
 				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
 				
+				// ** 만약 탐색한 문자열이 없다면....
 				if (iter == ObjectList.end())
 				{
 					cout << "무기가 없습니다." << endl;
@@ -160,10 +167,16 @@ int main(void)
 				}
 				else
 				{
-					iter->second.front()->Render();
-
+					// ** 키값이 존재 한다면 해당 키값의 리스트를 모두 돌면서
+					for (list<Object*>::iterator iter2 = iter->second.begin();
+						iter2 != iter->second.end(); ++iter2)
+					{
+						// ** 출력 한다.
+						(*iter2)->Render();
+					}
+					cout << endl;
 				}
-			}	
+			}
 			cout << "** 탐색 종료 **" << endl << endl;
 		}
 	}
