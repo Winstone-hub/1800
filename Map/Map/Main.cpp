@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 #include <string>
 #include <map>
 #include <vector>
@@ -45,6 +46,7 @@ int main(void)
 	}
 	*/
 
+	/*
 	{
 		{
 			//map<string, list<int>> Number;
@@ -68,6 +70,86 @@ int main(void)
 				if(!Number.empty())
 					cout << iter->second.find("정") << endl;
 			}
+		}
+	}
+	*/
+
+
+
+
+
+
+	{
+		class Object
+		{
+		private:
+			string Key;
+			int Attack;
+
+		public:
+			void Initialize() { Key = ""; Attack = rand()%250 + 50; }
+			void Render() { cout << "공격력 : " << Attack << endl; }
+
+		public:
+			string Getkey() const { return Key; }
+			void Setkey(const string& _Key) { Key = _Key; }
+			void SetAttack(const int& _Attack) { Attack = _Attack; }
+		};
+
+
+
+		{
+			map<string, list<Object*>> ObjectList;
+
+			for (int i = 0; i < 5; ++i)
+			{
+				Object* pObj = new Object;
+				pObj->Initialize();
+
+				string str = "";
+				cout << "이름 입력 : "; cin >> str;
+				pObj->Setkey(str);
+
+				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
+
+				if (iter == ObjectList.end())
+				{
+					list<Object*> TempList;
+					TempList.push_back(pObj);
+
+					// **map 데이터 삽입
+					ObjectList.insert(make_pair(pObj->Getkey(), TempList));
+				}
+				else
+					iter->second.push_back(pObj);
+			}
+			cout << "** 입력 종료 **" << endl << endl;
+
+
+			cout << "** 탐색 시작 **" << endl;
+			while (true)
+			{
+				// ** map 자료 탐색
+				string str = "";
+				cout << "이름 입력 : "; cin >> str;
+
+				if (str == "q")
+					break;
+
+				map<string, list<Object*>>::iterator iter = ObjectList.find(str);
+				
+				if (iter == ObjectList.end())
+				{
+					cout << "무기가 없습니다." << endl;
+					continue;
+				}
+				else
+				{
+					iter->second.front()->Render();
+
+				}
+			}	
+			cout << "** 탐색 종료 **" << endl << endl;
 		}
 	}
 
