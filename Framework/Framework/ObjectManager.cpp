@@ -9,10 +9,9 @@
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
-ObjectManager::ObjectManager() : pPlayer(nullptr), pEnemy(nullptr)
+ObjectManager::ObjectManager() : pPlayer(nullptr)
 {
-	for (int i = 0; i < 128; ++i)
-		pBullet[i] = nullptr;
+
 }
 
 ObjectManager::~ObjectManager()
@@ -21,79 +20,44 @@ ObjectManager::~ObjectManager()
 }
 
 
-void ObjectManager::CreateObject(int _StateIndex)
+void ObjectManager::AddObject(Object* _Object)
 {
-	for (int i = 0; i < 128; ++i)
+	// ** 맵에 매개변수로 넘어온 오브젝트의 키값이 존재 하는지 확인.
+	map<string, list<Object*>>::iterator iter = ObjectList.find(_Object->GetKey());
+
+	// ** 만약에 없다면.. 리스트 자체가 없으므로 
+	if (iter == ObjectList.end())
 	{
-		if (pBullet[i] == nullptr)
-		{
-			//pBullet[i] = ObjectFactory::CreateBullet(Vector3(74.0f, 1.0f));
-			pBullet[i] = ObjectFactory<Bullet>::CreateObject();
+		// ** 새로운 리스트를 생성
+		list<Object*> Temp;
 
-			switch (_StateIndex)
-			{
-			case 0:
-			{
-				Vector3 Direction = MathManager::GetDirection(pBullet[i]->GetPosition(), pPlayer->GetPosition());
-				pBullet[i]->SetDirection(Direction);
-				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
-			}
-				break;
-			case 1:
-				pBullet[i]->SetTarget(pPlayer);
-				((Bullet*)pBullet[i])->SetIndex(_StateIndex);
-				break;
-			}
-			break;
-		}
+		// ** 리스트에 오브젝트를 포함.
+		Temp.push_back(_Object);
+
+		// ** 리스트를 맵에 추가.
+		ObjectList.insert(make_pair(_Object->GetKey(), Temp));
 	}
-}
-
-void ObjectManager::Start()
-{
-	pPlayer = ObjectFactory<Player>::CreateObject();
-	pEnemy = ObjectFactory<Enemy>::CreateObject();
+	else
+		// ** 만약에 리스트가 존재 한다면 해당 리스트에 오브젝트를 추가.
+		iter->second.push_back(_Object);
 }
 
 void ObjectManager::Update()
 {
 	pPlayer->Update();
-	pEnemy->Update();
 
-	int result = 0;
-
-	for (int i = 0; i < 128; ++i)
-	{
-		if (pBullet[i])
-		{
-			result = pBullet[i]->Update();
-
-			if (CollisionManager::RectCollision(
-				pPlayer->GetTransform(), 
-				pBullet[i]->GetTransform()))
-			{
-				CursorManager::GetInstance()->WriteBuffer(0.0f, 0.0f, (char*)"충돌입니다.");
-			}
-		}
-
-		if (result == 1)
-		{
-			delete pBullet[i];
-			pBullet[i] = nullptr;
-		}
-	}
+	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+			(*iter2)->Update();
 }
 
 void ObjectManager::Render()
 {
 	pPlayer->Render();
-	pEnemy->Render();
 
-	for (int i = 0; i < 128; ++i)
-	{
-		if (pBullet[i])
-			pBullet[i]->Render();
-	}
+	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
+			(*iter2)->Render();
 }
 
 void ObjectManager::Release()
@@ -101,15 +65,14 @@ void ObjectManager::Release()
 	delete pPlayer;
 	pPlayer = nullptr;
 
-	delete pEnemy;
-	pEnemy = nullptr;
-
-	for (int i = 0; i < 128; ++i)
+	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
 	{
-		if (pBullet[i])
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
 		{
-			delete pBullet[i];
-			pBullet[i] = nullptr;
+			delete (*iter2);
+			(*iter2) = nullptr;
 		}
+		iter->second.clear();
 	}
+	ObjectList.clear();
 }

@@ -11,6 +11,8 @@ Enemy::~Enemy()
 
 void Enemy::Start()
 {
+	Key = "Enemy";
+	
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(0.0f, 0.0f);
@@ -22,20 +24,7 @@ void Enemy::Start()
 
 int Enemy::Update()
 {
-	if (Time + 250 < GetTickCount64())
-	{
-		Count++;
-
-		if (Count >= 10)
-		{
-			Count = 0;
-			ObjectManager::GetInstance()->CreateObject(1);
-		}
-		else
-			ObjectManager::GetInstance()->CreateObject(0);
-
-		Time = GetTickCount64();
-	}
+	
 	return 0;
 }
 

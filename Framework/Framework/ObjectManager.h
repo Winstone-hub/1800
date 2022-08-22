@@ -14,12 +14,16 @@ public:
 		return Instance;
 	}
 private:
-	Object* pBullet[128];
+	map<string, list<Object*>> ObjectList;
+
+	
 	Object* pPlayer;
-	Object* pEnemy;
 public:
-	void CreateObject(int _StateIndex);
-	void Start();
+	Object* GetPlayer() const { return pPlayer; }
+	void SetPlayer(Object* _Object) { pPlayer = _Object; }
+
+public:
+	void AddObject(Object* _Object);
 	void Update();
 	void Render();
 	void Release();

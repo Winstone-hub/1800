@@ -2,7 +2,7 @@
 #include "CursorManager.h"
 #include "MathManager.h"
 
-Bullet::Bullet()
+Bullet::Bullet() : Index(0), Speed(0), Option(0)
 {
 }
 
@@ -13,11 +13,12 @@ Bullet::~Bullet()
 
 void Bullet::Start()
 {
+	Key = "Bullet";
+
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
 	Info.Scale = Vector3(1.0f, 1.0f);
 	Info.Direction = Vector3(0.0f, 0.0f);
-
 
 	Speed = 1.0f;
 
@@ -44,7 +45,6 @@ void Bullet::Start()
 		Info.Position = Vector3(148.0f, float(rand() % 40));
 		break;
 	}
-
 }
 
 int  Bullet::Update()
@@ -64,9 +64,7 @@ int  Bullet::Update()
 
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
-	{
 		return 1;
-	}
 
 	return 0;
 }

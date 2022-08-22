@@ -14,7 +14,6 @@ public:
 	virtual void Release()override;
 public:
 	void SetIndex(int _Index) { Index = _Index; }
-	//void SetAngle(float _Angle) { Angle = _Angle; }
 public:
 	Bullet();
 	virtual ~Bullet();

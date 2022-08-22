@@ -262,7 +262,6 @@ int main(void)
 
 		multimap<float, Object*> ObjectList;
 
-
 		for (int i = 0; i < 20; ++i)
 		{
 			// ** 事端 持失

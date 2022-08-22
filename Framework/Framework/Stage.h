@@ -3,6 +3,8 @@
 
 class Stage : public Scene
 {
+private:
+	ULONGLONG Time;
 public:
 	virtual void Start()override;
 	virtual void Update()override;
