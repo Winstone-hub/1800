@@ -4,9 +4,10 @@
 #include "CursorManager.h"
 #include "Bullet.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "ObjectFactory.h"
 
-Stage::Stage() : Time(0)
+Stage::Stage() : EnemyTime(0)
 {
 
 }
@@ -21,26 +22,24 @@ void Stage::Start()
 	ObjectManager::GetInstance()->SetPlayer(
 		ObjectFactory<Player>::CreateObject(150.f / 2, 40.f / 2));
 
-	Time = GetTickCount64();
+	EnemyTime = GetTickCount64();
 }
 
 void Stage::Update()
 {
-	if (GetAsyncKeyState(VK_TAB))
+	if (EnemyTime + 1000 < GetTickCount64())
 	{
-		if (Time + 250 < GetTickCount64())
-		{
-			Object* pBullet = ObjectFactory<Bullet>::CreateObject();
+		srand( int(GetTickCount64() * EnemyTime) );
 
-			((Bullet*)pBullet)->SetIndex(1);
-			pBullet->SetTarget(
-				ObjectManager::GetInstance()->GetPlayer());
+		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
+			float(rand() % 148 + 1),
+			float(rand() % 39 + 1));
 
-			ObjectManager::GetInstance()->AddObject(pBullet);
+		ObjectManager::GetInstance()->AddObject(pEnemy);
 
-			Time = GetTickCount64();
-		}
+		EnemyTime = GetTickCount64();
 	}
+
 	ObjectManager::GetInstance()->Update();
 }
 

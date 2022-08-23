@@ -47,8 +47,20 @@ void ObjectManager::Update()
 	pPlayer->Update();
 
 	for (auto iter = ObjectList.begin(); iter != ObjectList.end(); ++iter)
-		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); ++iter2)
-			(*iter2)->Update();
+		for (auto iter2 = iter->second.begin(); iter2 != iter->second.end(); )
+		{
+			int Result = (*iter2)->Update();
+
+			if (Result)
+			{
+				delete (*iter2);
+				(*iter2) = nullptr;
+
+				iter2 = iter->second.erase(iter2);
+			}
+			else
+				++iter2;
+		}
 }
 
 void ObjectManager::Render()

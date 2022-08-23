@@ -1,7 +1,10 @@
 #include "Enemy.h"
 #include "ObjectManager.h"
+#include "CursorManager.h"
+#include "ObjectFactory.h"
+#include "Bullet.h"
 
-Enemy::Enemy()
+Enemy::Enemy() : Count(0)
 {
 }
 
@@ -24,13 +27,23 @@ void Enemy::Start()
 
 int Enemy::Update()
 {
-	
+	if (Time + 1000 < GetTickCount64())
+	{
+		Object* pBullet = ObjectFactory<Bullet>::CreateObject(Info.Position);
+
+		pBullet->SetTarget(ObjectManager::GetInstance()->GetPlayer());
+
+		ObjectManager::GetInstance()->AddObject(pBullet);
+
+		Time = GetTickCount64();
+	}
+
 	return 0;
 }
 
 void Enemy::Render()
 {
-
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"бр");
 }
 
 void Enemy::Release()

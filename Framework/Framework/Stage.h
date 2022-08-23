@@ -4,7 +4,7 @@
 class Stage : public Scene
 {
 private:
-	ULONGLONG Time;
+	ULONGLONG EnemyTime;
 public:
 	virtual void Start()override;
 	virtual void Update()override;

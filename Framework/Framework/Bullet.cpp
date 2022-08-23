@@ -2,7 +2,7 @@
 #include "CursorManager.h"
 #include "MathManager.h"
 
-Bullet::Bullet() : Index(0), Speed(0), Option(0)
+Bullet::Bullet() : Speed(0)
 {
 }
 
@@ -24,10 +24,8 @@ void Bullet::Start()
 
 	Target = nullptr;
 
-	Option = rand() % 4;
-
-
-	switch (Option)
+	/*
+	switch (rand() % 4)
 	{
 	case 0: // ** À§
 		Info.Position = Vector3(float(rand() % 148), 0.0f);
@@ -45,22 +43,18 @@ void Bullet::Start()
 		Info.Position = Vector3(148.0f, float(rand() % 40));
 		break;
 	}
+	*/
+
+	Time = GetTickCount64();
 }
 
 int  Bullet::Update()
 {
-	switch (Index)
-	{
-	case 0:
-		Info.Position += Info.Direction * Speed;
-		break;
-	case 1:
-	{
-		Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
-		Info.Position += Info.Direction * (Speed * 0.5f);
-	}
-		break;
-	}
+	Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
+	Info.Position += Info.Direction * (Speed * 0.5f);
+
+	if (Time + 2500 < GetTickCount64())
+		return 2;
 
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
@@ -71,15 +65,7 @@ int  Bullet::Update()
 
 void Bullet::Render()
 {
-	switch (Index)
-	{
-	case 0:
-		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*");
-		break;
-	case 1:
-		CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
-		break;
-	}
+	CursorManager::GetInstance()->WriteBuffer(Info.Position, (char*)"*", 12);
 }
 
 void Bullet::Release()
