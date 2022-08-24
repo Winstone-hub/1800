@@ -27,13 +27,17 @@ void Stage::Start()
 
 void Stage::Update()
 {
-	if (EnemyTime + 1000 < GetTickCount64())
+	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+	float Result = ((PlayerPosition.x * 100) / 100);
+	Result = (100 - Result);
+	Result = Result / 100;
+
+	if (EnemyTime + (2500 * Result) < GetTickCount64())
 	{
 		srand( int(GetTickCount64() * EnemyTime) );
 
 		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
-			float(rand() % 148 + 1),
-			float(rand() % 39 + 1));
+			float(rand() % 130 + 1), float(rand() % 39 + 1));
 
 		ObjectManager::GetInstance()->AddObject(pEnemy);
 

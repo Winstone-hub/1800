@@ -7,6 +7,7 @@ protected:
 	Transform Info;
 	Object* Target;
 	string Key;
+	float Speed;
 public:
 	virtual void Start()PURE;
 	virtual int Update()PURE;

@@ -70,6 +70,18 @@
     <Filter Include="소스 파일\01. Object\Shield">
       <UniqueIdentifier>{767a857e-4ee3-4a89-810f-400278696962}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\Enemy\EnemyBridge">
+      <UniqueIdentifier>{cf1ec09e-01be-4462-81e2-ce5a26bcf625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Enemy\EnemyBridge\Goolops">
+      <UniqueIdentifier>{4f5b6c1d-efcb-48fe-8a62-006a8f680ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Enemy\EnemyBridge\Mutant">
+      <UniqueIdentifier>{0e873bb7-5450-4871-99cf-cbc1f99467b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\Enemy\EnemyBridge\Doomboo">
+      <UniqueIdentifier>{ba7ca52e-2868-4832-a81c-c988fdba3781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -116,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="Shield.cpp">
       <Filter>소스 파일\01. Object\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="Goolops.cpp">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Goolops</Filter>
+    </ClCompile>
+    <ClCompile Include="Mutant.cpp">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Mutant</Filter>
+    </ClCompile>
+    <ClCompile Include="Doomboo.cpp">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Doomboo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +202,21 @@
     </ClInclude>
     <ClInclude Include="Shield.h">
       <Filter>소스 파일\01. Object\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\99. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBridge.h">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Goolops.h">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Goolops</Filter>
+    </ClInclude>
+    <ClInclude Include="Mutant.h">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Mutant</Filter>
+    </ClInclude>
+    <ClInclude Include="Doomboo.h">
+      <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Doomboo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

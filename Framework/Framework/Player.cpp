@@ -30,42 +30,27 @@ int Player::Update()
 
 	if (dwKey & KEY_UP)
 	{
-		Info.Position.y--;
-
-		if (Info.Position.y < 0)
-			Info.Position.y = 39;
+		if(Info.Position.y != 0)
+			Info.Position.y--;
 	}
 
 	if (dwKey & KEY_DOWN)
 	{
-		Info.Position.y++;
-
-		if (Info.Position.y > 39)
-			Info.Position.y = 0;
+		if(Info.Position.y != 39)
+			Info.Position.y++;
 	}
 
 	if (dwKey & KEY_LEFT)
 	{
-		Info.Position.x -= 2;
-	
-		if (Info.Position.x < 0)
-			Info.Position.x = 148;
+		if(Info.Position.x > 1)
+			Info.Position.x -= 2;
 	}
 
 	if (dwKey & KEY_RIGHT)
 	{
-		Info.Position.x += 2;
-
-		if (Info.Position.x > 150)
-			Info.Position.x = 0;
+		if (Info.Position.x < 98)
+			Info.Position.x += 2;
 	}
-
-	//if (dwKey & KEY_SPACE)
-		//ObjectManager::GetInstance()->CreateObject();
-
-	//if (dwKey & KEY_ESCAPE)
-		//Info.Position = Vector3(0.0f, 0.0f);
-
 	return 0;
 }
 

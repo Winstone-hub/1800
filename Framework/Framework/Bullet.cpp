@@ -2,7 +2,7 @@
 #include "CursorManager.h"
 #include "MathManager.h"
 
-Bullet::Bullet() : Speed(0)
+Bullet::Bullet() : Speed(0), Time(0)
 {
 }
 
@@ -44,17 +44,18 @@ void Bullet::Start()
 		break;
 	}
 	*/
-
+	
+	//Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
+	
 	Time = GetTickCount64();
 }
 
 int  Bullet::Update()
 {
-	Info.Direction = MathManager::GetDirection(Info.Position, Target->GetPosition());
 	Info.Position += Info.Direction * (Speed * 0.5f);
 
-	if (Time + 2500 < GetTickCount64())
-		return 2;
+	//if (Time + 5000 < GetTickCount64())
+		//return 2;
 
 	if (Info.Position.x <= 0 || Info.Position.x >= 150 ||
 		Info.Position.y <= 0 || Info.Position.y >= 40)
