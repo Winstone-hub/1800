@@ -9,10 +9,12 @@ protected:
 	string Key;
 	float Speed;
 public:
-	virtual void Start()PURE;
+	virtual Object* Start(string _Key)PURE;
 	virtual int Update()PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;
+
+	virtual Object* Clone()PURE;
 public:
 	Transform GetTransform() const { return Info; }
 	string GetKey() const { return Key; }
@@ -27,6 +29,7 @@ public:
 	void SetTarget(Object* _Target) { Target = _Target; }
 public:
 	Object();
+	Object(Transform _Info) : Info(_Info) {};
 	virtual ~Object();
 };
 

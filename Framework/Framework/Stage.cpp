@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ObjectFactory.h"
+#include "PrototypeManager.h"
 
 Stage::Stage() : EnemyTime(0)
 {
@@ -19,8 +20,10 @@ Stage::~Stage()
 
 void Stage::Start()
 {
+	/*
 	ObjectManager::GetInstance()->SetPlayer(
 		ObjectFactory<Player>::CreateObject(150.f / 2, 40.f / 2));
+	*/
 
 	EnemyTime = GetTickCount64();
 }
@@ -28,6 +31,7 @@ void Stage::Start()
 void Stage::Update()
 {
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
+
 	float Result = ((PlayerPosition.x * 100) / 100);
 	Result = (100 - Result);
 	Result = Result / 100;
@@ -36,8 +40,10 @@ void Stage::Update()
 	{
 		srand( int(GetTickCount64() * EnemyTime) );
 
-		Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
-			float(rand() % 130 + 1), float(rand() % 39 + 1));
+		//Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
+			//float(rand() % 130 + 1), float(rand() % 39 + 1));
+
+		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy");
 
 		ObjectManager::GetInstance()->AddObject(pEnemy);
 

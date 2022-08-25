@@ -82,6 +82,12 @@
     <Filter Include="소스 파일\01. Object\Enemy\EnemyBridge\Doomboo">
       <UniqueIdentifier>{ba7ca52e-2868-4832-a81c-c988fdba3781}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\Pattern">
+      <UniqueIdentifier>{b3968d9e-85f7-4925-bcd0-a113b918df84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\Pattern\Prototype">
+      <UniqueIdentifier>{6406a3c6-cebe-410b-90f4-a06cf095a83e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -137,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="Doomboo.cpp">
       <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Doomboo</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeManager.cpp">
+      <Filter>소스 파일\99. Manager\Pattern\Prototype</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="Doomboo.h">
       <Filter>소스 파일\01. Object\Enemy\EnemyBridge\Doomboo</Filter>
+    </ClInclude>
+    <ClInclude Include="PrototypeManager.h">
+      <Filter>소스 파일\99. Manager\Pattern\Prototype</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

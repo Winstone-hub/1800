@@ -13,10 +13,9 @@ Shield::~Shield()
 	Release();
 }
 
-
-void Shield::Start()
+Object* Shield::Start(string _Key)
 {
-	Key = "Shield";
+	Key = _Key;
 
 	Info.Position = Vector3(0.0f, 0.0f);
 	Info.Rotation = Vector3(0.0f, 0.0f);
@@ -25,6 +24,8 @@ void Shield::Start()
 
 	Angle = 0.0f;
 	Time = GetTickCount64();
+
+	return this;
 }
 
 int Shield::Update()

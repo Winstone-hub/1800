@@ -1,9 +1,9 @@
 #pragma once
 #include "Headers.h"
-
 template <typename T>
 class ObjectFactory
 {
+/*
 public:
 	static Object* CreateObject()
 	{
@@ -32,4 +32,5 @@ public:
 
 		return pObject;
 	}
+*/
 };
