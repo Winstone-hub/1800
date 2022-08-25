@@ -23,13 +23,7 @@ Enemy::~Enemy()
 Object* Enemy::Start(string _Key)
 {
 	Key = _Key;
-	
-	Info.Position = Vector3(0.0f, 0.0f);
-	Info.Rotation = Vector3(0.0f, 0.0f);
-	Info.Scale = Vector3(0.0f, 0.0f);
-	Info.Direction = Vector3(-1.0f, 0.0f);
 
-	//Speed = 0.2f;
 	Time = GetTickCount64() - 7000;
 
 	return this;

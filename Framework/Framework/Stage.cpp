@@ -20,10 +20,10 @@ Stage::~Stage()
 
 void Stage::Start()
 {
-	/*
-	ObjectManager::GetInstance()->SetPlayer(
-		ObjectFactory<Player>::CreateObject(150.f / 2, 40.f / 2));
-	*/
+	Object* pObj = PrototypeManager::GetInstance()->FindObject("Player")->Clone();
+
+	if(pObj != nullptr)
+		ObjectManager::GetInstance()->SetPlayer(pObj);
 
 	EnemyTime = GetTickCount64();
 }
@@ -40,12 +40,16 @@ void Stage::Update()
 	{
 		srand( int(GetTickCount64() * EnemyTime) );
 
-		//Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
-			//float(rand() % 130 + 1), float(rand() % 39 + 1));
+		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy")->Clone();
+		
+		if (pEnemy != nullptr)
+		{
+			pEnemy->SetPosition(
+				float(rand() % 148 + 1),
+				float(rand() % 39 + 1));
 
-		Object* pEnemy = PrototypeManager::GetInstance()->FindObject("Enemy");
-
-		ObjectManager::GetInstance()->AddObject(pEnemy);
+			ObjectManager::GetInstance()->AddObject(pEnemy);
+		}
 
 		EnemyTime = GetTickCount64();
 	}
