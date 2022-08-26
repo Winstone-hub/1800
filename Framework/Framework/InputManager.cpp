@@ -4,7 +4,7 @@ InputManager* InputManager::Instance = nullptr;
 
 InputManager::InputManager() : dwKey(0)
 {
-
+	
 }
 
 InputManager::~InputManager()

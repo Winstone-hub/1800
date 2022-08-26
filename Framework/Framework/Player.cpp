@@ -55,6 +55,7 @@ int Player::Update()
 			Info.Position.x += 2;
 	}
 	return 0;
+
 }
 
 void Player::Render()

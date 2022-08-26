@@ -14,7 +14,7 @@ public:
 	virtual Object* Clone()override { return new Bullet(*this); }
 public:
 	Bullet();
-	Bullet(Transform _Info) : Object(_Info) {};
+	Bullet(Transform _Info) : Object(_Info), Speed(0.0f), Time(0) {};
 	virtual ~Bullet();
 };
 

@@ -88,6 +88,9 @@
     <Filter Include="소스 파일\99. Manager\Pattern\Prototype">
       <UniqueIdentifier>{6406a3c6-cebe-410b-90f4-a06cf095a83e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\Pattern\Objectpool">
+      <UniqueIdentifier>{7a7c3a4c-4983-4f9c-9e30-0b58c8df0ba3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -146,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="PrototypeManager.cpp">
       <Filter>소스 파일\99. Manager\Pattern\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectpoolManager.cpp">
+      <Filter>소스 파일\99. Manager\Pattern\Objectpool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="PrototypeManager.h">
       <Filter>소스 파일\99. Manager\Pattern\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectpoolManager.h">
+      <Filter>소스 파일\99. Manager\Pattern\Objectpool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

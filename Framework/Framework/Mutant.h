@@ -9,6 +9,8 @@ public:
 	virtual void Render()override;
 	virtual void Release()override;
 public:
+	virtual Bridge* Clone()override { return new Mutant(*this); }
+public:
 	Mutant();
 	virtual ~Mutant();
 };

@@ -58,6 +58,7 @@
     <ClCompile Include="Mutant.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="ObjectpoolManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PrototypeManager.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="ObjectpoolManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PrototypeManager.h" />
     <ClInclude Include="Scene.h" />

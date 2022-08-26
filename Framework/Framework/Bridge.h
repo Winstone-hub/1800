@@ -13,6 +13,8 @@ public:
 	virtual int  Update(Transform& _Transform)PURE;
 	virtual void Render()PURE;
 	virtual void Release()PURE;
+
+	virtual Bridge* Clone()PURE;
 public:
 	Bridge() : pObject(nullptr) {}
 	virtual ~Bridge() {}

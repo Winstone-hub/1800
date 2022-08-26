@@ -9,6 +9,8 @@ public:
 	virtual void Render()override;
 	virtual void Release()override;
 public:
+	virtual Bridge* Clone()override { return new Doomboo(*this); } 
+public:
 	Doomboo();
 	virtual ~Doomboo();
 };

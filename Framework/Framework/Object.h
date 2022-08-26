@@ -29,7 +29,7 @@ public:
 	void SetTarget(Object* _Target) { Target = _Target; }
 public:
 	Object();
-	Object(Transform _Info) : Info(_Info) {};
+	Object(Transform _Info) : Info(_Info), Speed(0.0f), Target(nullptr) {};
 	virtual ~Object();
 };
 

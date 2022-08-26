@@ -1,6 +1,6 @@
 #include "Object.h"
 
-Object::Object() : Target(nullptr)
+Object::Object() : Speed(0.0f), Target(nullptr)
 {
 }
 

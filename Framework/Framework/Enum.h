@@ -8,3 +8,12 @@ enum class SCENEID
 	STAGE, 
 	EXIT,
 };
+
+
+enum ENEMYID
+{
+	EnemyID_Goolops,
+	EnemyID_Mutant,
+	EnemyID_Doomboo,
+	EnemyID_MAX,
+};

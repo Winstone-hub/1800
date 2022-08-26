@@ -3,6 +3,9 @@
 // ** Framework v11.1
 #include "MainUpdate.h"
 
+INPUT_RECORD rc;
+DWORD        dw;
+
 
 int main(void)
 {
@@ -26,6 +29,5 @@ int main(void)
 			Time = GetTickCount64();
 		}
 	}
-
 	return 0;
 }

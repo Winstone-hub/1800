@@ -29,7 +29,7 @@ void CursorManager::CreateBuffer(const int& _Width, const int& _Height)
 	SetConsoleScreenBufferSize(HBuffer[0], Size);
 	SetConsoleWindowInfo(HBuffer[0], TRUE, &Rect);
 	SetConsoleCursorInfo(HBuffer[0], &CursorInfo);
-
+	
 	HBuffer[1] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleScreenBufferSize(HBuffer[1], Size);
 	SetConsoleWindowInfo(HBuffer[1], TRUE, &Rect);
@@ -75,9 +75,6 @@ void CursorManager::WriteBuffer(float _x, float _y, int _Value, int _Color)
 	SetColor(_Color);
 
 	DWORD dw;
-
-
-	//char Buffer[128] = "";
 
 	char* Buffer = new char[sizeof(int)];
 
