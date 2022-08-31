@@ -49,48 +49,32 @@ void ObjectpoolManager::AddObject(string _Key)
 			}
 		}
 	}
-
-	/*
-	map<string, list<Object*>> List = (_b == true) ? EnableList : DisableList;
-
-
-	if (iter == List.end())
-	{
-		list<Object*> Temp;
-		Temp.push_back(_Object);
-		DisableList.insert(make_pair(_Object->GetKey(), Temp));
-	}
 	else
 	{
-		if (!iter->second.empty())
+		// ** 리스트는 존재하지만 객체가 없는 상태를 확인.
+		if (iter->second.empty())
 		{
+			Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
 
-		}
-		else
-		{
 			for (int i = 0; i < 5; ++i)
 			{
-				Object* pEnemy = _Object->Clone();
-
-				srand(GetTickCount64() * GetTickCount64());
-
-				pEnemy->SetPosition(
-					float(rand() % 148 + 1),
-					float(rand() % 39 + 1));
+				if (pProtoObj)
+				{
+					Object* pObject = pProtoObj->Clone();
+					iter->second.push_back(pObject);
+				}
+				else
+				{
+					// Err : pProtoObj 에서 객체원본을 찾을수 없다.
+					return;
+				}
 			}
 		}
-
-		Object* pObj = iter->second.back();
-		iter->second.pop_back();
-
-
-
-
-		map<string, list<Object*>>::iterator iter = EnableList.find(_Object->GetKey());
-
-		
 	}
-	*/
+
+	// ** 여기 까지 도달했다면 여분의 객체가 생성된 것이므로 
+	// ** DisableList => EnableList 이동.
+
 }
 
 void ObjectpoolManager::SwitchingObject(Object* _Object)
