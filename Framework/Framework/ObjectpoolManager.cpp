@@ -79,7 +79,9 @@ void ObjectpoolManager::AddObject(string _Key)
 
 void ObjectpoolManager::SwitchingObject(Object* _Object)
 {
-	
+	// ** 함수를 그대로 사용 할 수 없다. 수정 요망
+
+	// ** 2개가 될수도 있고 아닐수도 있고....
 }
 
 void ObjectpoolManager::Update()
