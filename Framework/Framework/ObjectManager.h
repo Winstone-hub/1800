@@ -14,8 +14,6 @@ public:
 		return Instance;
 	}
 private:
-	map<string, list<Object*>> ObjectList;
-
 	
 	Object* pPlayer;
 public:
@@ -23,7 +21,8 @@ public:
 	void SetPlayer(Object* _Object) { pPlayer = _Object; }
 
 public:
-	void AddObject(Object* _Object);
+	void AddObject(string _Key);
+	
 	void Update();
 	void Render();
 	void Release();

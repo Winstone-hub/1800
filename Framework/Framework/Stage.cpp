@@ -1,5 +1,6 @@
 #include "Stage.h"
 #include "SceneManager.h"
+#include "ObjectpoolManager.h"
 #include "ObjectManager.h"
 #include "CursorManager.h"
 #include "Bullet.h"
@@ -30,6 +31,11 @@ void Stage::Start()
 
 void Stage::Update()
 {
+	ObjectManager::GetInstance()->AddObject("Enemy");
+		
+
+
+	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
 
 	float Result = ((PlayerPosition.x * 100) / 100);
@@ -53,6 +59,7 @@ void Stage::Update()
 
 		EnemyTime = GetTickCount64();
 	}
+	*/
 
 	ObjectManager::GetInstance()->Update();
 }

@@ -20,7 +20,8 @@ private:
 	// ** 비 활성화된 오브젝트 리스트
 	map<string, list<Object*>> DisableList;
 public:
-	void GetObject(string _Key);
+	bool FindObject(string _Key);
+	void AddObject(string _Key);
 	void SwitchingObject(Object* _Object);
 	void Update();
 	void Render();
