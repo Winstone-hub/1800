@@ -22,7 +22,7 @@ public:
 
 public:
 	void AddObject(string _Key);
-	
+	void AddObject(Vector3 _position, string _Key);
 	void Update();
 	void Render();
 	void Release();

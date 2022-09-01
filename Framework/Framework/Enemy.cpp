@@ -41,6 +41,8 @@ Object* Enemy::Start(string _Key)
 
 int Enemy::Update()
 {
+	Info.Position.x -= 1;
+
 	if (pBridge)
 		pBridge->Update(Info);
 	else
@@ -66,6 +68,9 @@ int Enemy::Update()
 			pBridge->SetObject(this);
 		}
 	}
+
+	if (Info.Position.x <= 1)
+		return 1;
 
 	return 0;
 }

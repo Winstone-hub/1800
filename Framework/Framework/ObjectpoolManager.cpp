@@ -1,6 +1,7 @@
 #include "ObjectpoolManager.h"
 #include "PrototypeManager.h"
 #include "Object.h"
+#include "CursorManager.h"
 
 ObjectpoolManager* ObjectpoolManager::Instance = nullptr;
 
@@ -32,56 +33,40 @@ void ObjectpoolManager::AddObject(string _Key)
 	if (iter == DisableList.end())
 	{
 		list<Object*> Temp;
-		Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
-
-		for (int i = 0; i < 5; ++i)
-		{
-			if (pProtoObj)
-			{
-				Object* pObject = pProtoObj->Clone();
-				Temp.push_back(pObject);
-				DisableList.insert(make_pair(_Key, Temp));
-			}
-			else
-			{
-				// Err : pProtoObj 에서 객체원본을 찾을수 없다.
-				return;
-			}
-		}
+		DisableList.insert(make_pair(_Key, Temp));
+		iter = DisableList.find(_Key);
 	}
-	else
+
+	Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
+
+	for (int i = 0; i < 5; ++i)
 	{
-		// ** 리스트는 존재하지만 객체가 없는 상태를 확인.
-		if (iter->second.empty())
+		if (pProtoObj)
 		{
-			Object* pProtoObj = PrototypeManager::GetInstance()->FindObject(_Key);
-
-			for (int i = 0; i < 5; ++i)
-			{
-				if (pProtoObj)
-				{
-					Object* pObject = pProtoObj->Clone();
-					iter->second.push_back(pObject);
-				}
-				else
-				{
-					// Err : pProtoObj 에서 객체원본을 찾을수 없다.
-					return;
-				}
-			}
+			Object* pObject = pProtoObj->Clone();
+			iter->second.push_back(pObject);
+		}
+		else
+		{
+			// Err : pProtoObj 에서 객체원본을 찾을수 없다.
+			return;
 		}
 	}
-
-	// ** 여기 까지 도달했다면 여분의 객체가 생성된 것이므로 
-	// ** DisableList => EnableList 이동.
-
 }
 
-void ObjectpoolManager::SwitchingObject(Object* _Object)
+void ObjectpoolManager::SwitchingObject(string _Key, Vector3 _Position)
 {
-	// ** 함수를 그대로 사용 할 수 없다. 수정 요망
+	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
 
-	// ** 2개가 될수도 있고 아닐수도 있고....
+	if (iter->second.empty())
+		AddObject(_Key);
+
+
+	Object* pObj = iter->second.back();
+	pObj->SetPosition(_Position);
+
+	EnableList[_Key].push_back(pObj);
+	iter->second.pop_back();
 }
 
 void ObjectpoolManager::Update()
@@ -94,7 +79,8 @@ void ObjectpoolManager::Update()
 
 			if (Result)
 			{
-				SwitchingObject((*iter2));
+				// ** EnableList => DisableList 이동.
+				DisableList[(*iter2)->GetKey()].push_back((*iter2));
 				iter2 = iter->second.erase(iter2);
 			}
 			else
@@ -112,4 +98,7 @@ void ObjectpoolManager::Render()
 			(*iter2)->Render();
 		}
 	}
+
+	CursorManager::GetInstance()->WriteBuffer(125, 0, (int)EnableList["Enemy"].size());
+	CursorManager::GetInstance()->WriteBuffer(125, 1, (int)DisableList["Enemy"].size());
 }

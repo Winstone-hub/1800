@@ -27,13 +27,15 @@ void Stage::Start()
 		ObjectManager::GetInstance()->SetPlayer(pObj);
 
 	EnemyTime = GetTickCount64();
+
+	for (int i = 0; i < 20; ++i)
+	{
+		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
+	}
 }
 
 void Stage::Update()
 {
-	ObjectManager::GetInstance()->AddObject("Enemy");
-		
-
 
 	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
