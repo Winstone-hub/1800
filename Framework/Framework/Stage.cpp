@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "ObjectFactory.h"
 #include "PrototypeManager.h"
+#include "ScrollBox.h"
 
 Stage::Stage() : EnemyTime(0)
 {
@@ -32,10 +33,13 @@ void Stage::Start()
 	{
 		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
 	}
+	Box = new ScrollBox;
+	Box->Start();
 }
 
 void Stage::Update()
 {
+	
 
 	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
@@ -68,6 +72,7 @@ void Stage::Update()
 
 void Stage::Render()
 {
+	Box->Render();
 	ObjectManager::GetInstance()->Render();
 }
 

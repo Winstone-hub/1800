@@ -14,12 +14,10 @@ public:
 		return Instance;
 	}
 private:
-	
 	Object* pPlayer;
 public:
 	Object* GetPlayer() const { return pPlayer; }
 	void SetPlayer(Object* _Object) { pPlayer = _Object; }
-
 public:
 	void AddObject(string _Key);
 	void AddObject(Vector3 _position, string _Key);

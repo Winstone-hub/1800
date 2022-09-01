@@ -36,6 +36,21 @@ void CursorManager::CreateBuffer(const int& _Width, const int& _Height)
 	SetConsoleCursorInfo(HBuffer[1], &CursorInfo);
 }
 
+// ** 버퍼에 쓰기
+void CursorManager::WriteBuffer(float _x, float _y, string _string, int _Color)
+{
+	COORD CursorPosition = { (SHORT)_x , (SHORT)_y };
+
+	SetConsoleCursorPosition(HBuffer[BufferIndex], CursorPosition);
+
+	SetColor(_Color);
+
+	DWORD dw;
+
+	char* _str = (char*)_string.c_str();
+
+	WriteFile(HBuffer[BufferIndex], _str, (DWORD)strlen(_str), &dw, NULL);
+}
 
 // ** 버퍼에 쓰기
 void CursorManager::WriteBuffer(float _x, float _y, char* _str, int _Color)

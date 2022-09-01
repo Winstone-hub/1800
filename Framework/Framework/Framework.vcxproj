@@ -63,8 +63,10 @@
     <ClCompile Include="PrototypeManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ScrollBox.cpp" />
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bridge.h" />
@@ -92,9 +94,11 @@
     <ClInclude Include="PrototypeManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ScrollBox.h" />
     <ClInclude Include="Shield.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
+    <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

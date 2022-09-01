@@ -19,6 +19,7 @@ public:
 	void CreateBuffer(const int& _Width, const int& _Height);
 	void WriteBuffer(float _x, float _y, char* _str, int _Color = 15);
 	void WriteBuffer(Vector3 _Position, char* _str, int _Color = 15);
+	void WriteBuffer(float _x, float _y, string _string, int _Color = 15);
 
 	void WriteBuffer(float _x, float _y, float _Value, int _Color = 15);
 	void WriteBuffer(float _x, float _y, int _Value, int _Color = 15);

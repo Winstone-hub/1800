@@ -36,7 +36,6 @@ void ObjectManager::AddObject(Vector3 _position, string _Key)
 	ObjectpoolManager::GetInstance()->SwitchingObject(_Key, _position);
 }
 
-
 void ObjectManager::Update()
 {
 	pPlayer->Update();
