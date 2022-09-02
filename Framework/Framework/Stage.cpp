@@ -35,6 +35,9 @@ void Stage::Start()
 	}
 	Box = new ScrollBox;
 	Box->Start();
+
+	Box->SetPosition(10, 10);
+	Box->SetBoxSize(10, 10);
 }
 
 void Stage::Update()

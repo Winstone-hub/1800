@@ -1,6 +1,6 @@
 #include "UserInterface.h"
 
-UserInterface::UserInterface()
+UserInterface::UserInterface() : End(3)
 {
 }
 
