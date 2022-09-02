@@ -1,8 +1,11 @@
 #pragma once
 #include "Object.h"
 
+class UserInterface;
 class Skill : public Object
 {
+private:
+	UserInterface* Box;
 public:
 	virtual Object* Start(string _Key)override;
 	virtual int  Update()override;

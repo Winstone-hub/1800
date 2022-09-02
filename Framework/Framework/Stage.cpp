@@ -9,6 +9,7 @@
 #include "ObjectFactory.h"
 #include "PrototypeManager.h"
 #include "ScrollBox.h"
+#include "Skill.h"
 
 Stage::Stage() : EnemyTime(0)
 {
@@ -29,15 +30,18 @@ void Stage::Start()
 
 	EnemyTime = GetTickCount64();
 
-	for (int i = 0; i < 20; ++i)
-	{
-		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
-	}
-	Box = new ScrollBox;
-	Box->Start();
+	
+	pSkill[0] = new Skill;
+	pSkill[0]->SetPosition(10, 1);
+	pSkill[0]->Start("Skill");
 
-	Box->SetPosition(10, 10);
-	Box->SetBoxSize(10, 10);
+	pSkill[1] = new Skill;
+	pSkill[1]->SetPosition(18, 1);
+	pSkill[1]->Start("Skill");
+	
+
+	for (int i = 0; i < 20; ++i)
+		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
 }
 
 void Stage::Update()
@@ -76,7 +80,9 @@ void Stage::Update()
 void Stage::Render()
 {
 	ObjectManager::GetInstance()->Render();
-	Box->Render();
+
+	for (int i = 0; i < 2; ++i)
+		pSkill[i]->Render();
 }
 
 void Stage::Release()

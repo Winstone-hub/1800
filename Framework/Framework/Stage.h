@@ -1,11 +1,12 @@
 #pragma once
 #include "Scene.h"
 
-class UserInterface;
+class Object;
 class Stage : public Scene
 {
 private:
-	UserInterface* Box;
+	Object* pSkill[2];
+private:
 	ULONGLONG EnemyTime;
 public:
 	virtual void Start()override;
