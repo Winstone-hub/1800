@@ -3,7 +3,13 @@
 
 class ScrollBox : public UserInterface
 {
-public:
+private:
+	int Width, Height;
+	string WidthTexture;
+	char* HeightTexture;
+
+	int End;
+public:	   
 	virtual void Start()override;
 	virtual void Update()override;
 	virtual void Render()override;

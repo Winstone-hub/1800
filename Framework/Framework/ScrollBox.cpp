@@ -2,7 +2,7 @@
 #include "CursorManager.h"
 
 
-ScrollBox::ScrollBox()
+ScrollBox::ScrollBox() : Width(0), Height(0)
 {
 
 }
@@ -17,18 +17,24 @@ void ScrollBox::Start()
 {
 	Key = "ScrollBox";
 
-	Info.Position = Vector3(0.0f, 0.0f, 0.0f);
-	Info.Rotation = Vector3(0.0f, 0.0f, 0.0f);
-	Info.Scale = Vector3(0.0f, 0.0f, 0.0f);
-	Info.Direction = Vector3(0.0f, 0.0f, 0.0f);
+	//Info.Position = Vector3(0.0f, 0.0f, 0.0f);
+	//Info.Rotation = Vector3(0.0f, 0.0f, 0.0f);
+	//Info.Scale = Vector3(0.0f, 0.0f, 0.0f);
+	//Info.Direction = Vector3(0.0f, 0.0f, 0.0f);
+
+	Width = 2;
+	Height = 1;
+
+	StartPos = Vector3(50, 10);
+	EndPos = Vector3(StartPos.x + Width, StartPos.y + Height);
+
+	WidthTexture = "";
+	HeightTexture = (char*)"¦¢";
 
 	Texture.push_back("¦£¦¡¦¤");
 	Texture.push_back("¦¢¡¡¦¢");
 	Texture.push_back("¦¦¦¡¦¥");
-
-	string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-
-	int length = int(str.size() / 2) + 1;
+	End = 3;
 }
 
 void ScrollBox::Update()
@@ -38,22 +44,64 @@ void ScrollBox::Update()
 
 void ScrollBox::Render()
 {
+	/*
 	if (GetAsyncKeyState(VK_CONTROL))
 	{
-		auto iter = Texture.begin() + 1;
-		Texture.insert(iter, (*iter));
+		++Height;
+		Width += 2;
+		WidthTexture += "¦¡";
+
+		EndPos = Vector3(StartPos.x + Width, StartPos.y + Height);
 	}
 
-	int i = 0;
-	for (vector<string>::iterator iter = Texture.begin(); iter != Texture.end(); ++iter)
+	// ** ÁÂ»ó
+	CursorManager::GetInstance()->WriteBuffer(StartPos.x, StartPos.y, "¦£");
+	CursorManager::GetInstance()->WriteBuffer(StartPos.x + 2, StartPos.y, WidthTexture);
+	
+	// ** ¿ì»ó
+	CursorManager::GetInstance()->WriteBuffer(EndPos.x, StartPos.y, "¦¤");
+
+	// ** ÁÂÇÏ
+	CursorManager::GetInstance()->WriteBuffer(StartPos.x, EndPos.y, "¦¦");
+	CursorManager::GetInstance()->WriteBuffer(StartPos.x + 2, EndPos.y, WidthTexture);
+
+	// ** ¿ìÇÏ
+	CursorManager::GetInstance()->WriteBuffer(EndPos.x, EndPos.y, "¦¥");
+
+	for (int y = StartPos.y + 1 ; y < EndPos.y ; ++y)
 	{
-		string::iterator iter2 = iter->begin() + 2;
-
-		//iter->insert(iter2, (char)"-");
-		
-		CursorManager::GetInstance()->WriteBuffer(50, 1 + i, (*iter));
-		i++;
+		CursorManager::GetInstance()->WriteBuffer(StartPos.x, y, HeightTexture);
+		CursorManager::GetInstance()->WriteBuffer(EndPos.x, y, HeightTexture);
 	}
+	*/
+
+	if (GetAsyncKeyState(VK_CONTROL))
+	{
+		auto Heightiter = Texture.begin() + 1;
+		Texture.insert(Heightiter, (*Heightiter));
+
+		vector<string>::iterator Widthiter = Texture.begin();
+
+		Widthiter[0].pop_back();
+		Widthiter[0].pop_back();
+		Widthiter[0] += "¦¡¦¤";
+
+		for (int i = 1; i < End; ++i)
+		{
+			Widthiter[i].pop_back();
+			Widthiter[i].pop_back();
+			Widthiter[i] += "¡¡¦¢";
+		}
+
+		Widthiter[End].pop_back();
+		Widthiter[End].pop_back();
+		Widthiter[End] += "¦¡¦¥";
+		++End;
+	}
+
+	int n = 0;
+	for (vector<string>::iterator iter = Texture.begin(); iter != Texture.end(); ++iter, ++n)
+		CursorManager::GetInstance()->WriteBuffer(50, 1 + n, (*iter));
 }
 
 void ScrollBox::Release()

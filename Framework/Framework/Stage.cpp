@@ -72,8 +72,8 @@ void Stage::Update()
 
 void Stage::Render()
 {
-	Box->Render();
 	ObjectManager::GetInstance()->Render();
+	Box->Render();
 }
 
 void Stage::Release()

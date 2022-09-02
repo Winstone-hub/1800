@@ -4,7 +4,8 @@
 class UserInterface
 {
 protected:
-	Transform Info;
+	Vector3 StartPos;
+	Vector3 EndPos;
 	string Key;
 	vector<string> Texture;
 public:
