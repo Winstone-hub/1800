@@ -32,11 +32,11 @@ void Stage::Start()
 
 	
 	pSkill[0] = new Skill;
-	pSkill[0]->SetPosition(10, 1);
+	pSkill[0]->SetPosition(50, 5);
 	pSkill[0]->Start("Skill");
 
 	pSkill[1] = new Skill;
-	pSkill[1]->SetPosition(18, 1);
+	pSkill[1]->SetPosition(100, 5);
 	pSkill[1]->Start("Skill");
 	
 

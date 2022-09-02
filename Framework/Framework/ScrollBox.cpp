@@ -20,7 +20,7 @@ void ScrollBox::Start()
 	Width = 2;
 	Height = 1;
 
-	StartPos = Vector3(50, 10);
+	//StartPos = Vector3(50, 10);
 	EndPos = Vector3(StartPos.x + Width, StartPos.y + Height);
 
 	WidthTexture = "";
@@ -41,7 +41,7 @@ void ScrollBox::Render()
 {
 	int n = 0;
 	for (vector<string>::iterator iter = Texture.begin(); iter != Texture.end(); ++iter, ++n)
-		CursorManager::GetInstance()->WriteBuffer(50, 1 + n, (*iter));
+		CursorManager::GetInstance()->WriteBuffer(StartPos.x, StartPos.y + n, (*iter));
 }
 
 void ScrollBox::Release()
