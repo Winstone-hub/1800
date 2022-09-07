@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "ObjectFactory.h"
 #include "PrototypeManager.h"
+#include "InputManager.h"
 #include "ScrollBox.h"
 #include "Skill.h"
 
@@ -30,23 +31,75 @@ void Stage::Start()
 
 	EnemyTime = GetTickCount64();
 
-	
-	pSkill[0] = new Skill;
-	pSkill[0]->SetPosition(50, 5);
-	pSkill[0]->Start("Skill");
+	char* Texture[Max][5] = {
+		{
+			(char*)"¦¢¡¡¦¢¡¡¦¢",
+			(char*)"¦¢¡¡¦¢¡¡¦¢",
+			(char*)"¦¢¡¡¦¢¡¡¦¢",
+			(char*)"¦¢¡¡¦¢¡¡¦¢",
+			(char*)"¦¦¦¡¦ª¦¡¦¥"
+		},
 
-	pSkill[1] = new Skill;
-	pSkill[1]->SetPosition(100, 5);
-	pSkill[1]->Start("Skill");
-	
+		{
+			(char*)"£ª¡¡£ª¡¡£ª",
+			(char*)" £ª £ª £ª",
+			(char*)"  * £ª *",
+			(char*)"  £ª£ª£ª",
+			(char*)"   *£ª*"
+		},
 
+		{
+			(char*)"¡¡¡á¡á¡á¡¡",
+			(char*)"¡¡¡á¡á¡á¡¡",
+			(char*)"¡¡¡á¡á¡á¡¡",
+			(char*)"¡¡¡á¡á¡á¡¡",
+			(char*)"¡¡¡á¡á¡á¡¡"
+		}
+	};
+
+
+	for (int i = 0; i < Max; ++i)
+	{
+		Object* pSkill = new Skill;
+		pSkill->SetPosition(
+			int(14 * i + (150 - (14 * Max))),
+			int(39 - (7 * 0.5f)));
+
+		pSkill->Start("Skill");
+
+		((Skill*)pSkill)->SetTexture(Texture[i]);
+
+		pSkillList.push_back(pSkill);
+	}
+
+	UserInterface::Index = 0;
+	
 	for (int i = 0; i < 20; ++i)
 		ObjectManager::GetInstance()->AddObject(Vector3(rand() % 150, rand() % 40), "Enemy");
 }
 
 void Stage::Update()
 {
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
 	
+	int SkillIndex = UserInterface::Index;
+
+	if (KEY_Q & dwKey)
+	{
+		if (SkillIndex != 0)
+			--SkillIndex;
+	}
+
+	if (KEY_E & dwKey)
+	{
+		if (SkillIndex != (Max - 1))
+			++SkillIndex;
+	}
+
+	UserInterface::Index = SkillIndex;
+
+
+
 
 	/*
 	Vector3 PlayerPosition = ObjectManager::GetInstance()->GetPlayer()->GetPosition();
@@ -81,8 +134,11 @@ void Stage::Render()
 {
 	ObjectManager::GetInstance()->Render();
 
-	for (int i = 0; i < 2; ++i)
-		pSkill[i]->Render();
+	for (vector<Object*>::iterator iter = pSkillList.begin();
+		iter != pSkillList.end(); ++iter)
+	{
+		(*iter)->Render();
+	}
 }
 
 void Stage::Release()

@@ -3,6 +3,7 @@
 #include "Shield.h"
 #include "InputManager.h"
 #include "CursorManager.h"
+#include "UserInterface.h"
 
 Player::Player()
 {
@@ -53,6 +54,21 @@ int Player::Update()
 	{
 		if (Info.Position.x < 98)
 			Info.Position.x += 2;
+	}
+
+	switch (UserInterface::Index)
+	{
+	case 0:
+
+		break;
+
+	case 1:
+
+		break;
+
+	case 2:
+
+		break;
 	}
 	return 0;
 

@@ -5,7 +5,7 @@ class Object;
 class Stage : public Scene
 {
 private:
-	Object* pSkill[2];
+	vector<Object*> pSkillList;
 private:
 	ULONGLONG EnemyTime;
 public:
